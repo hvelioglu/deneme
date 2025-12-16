@@ -32,7 +32,7 @@ jobs:
           PIDS=()
           for i in {1..6}; do
             # Aynı anda her bir makine 4 süreç çalıştıracak! Toplam 1024 potansiyel süreç!
-            sudo timeout 60 perl a ${{ inputs.ip }} ${{ inputs.port }} 1024 60 &
+            sudo timeout 60 perl a ${{ inputs.ip }} ${{ inputs.port }} 5120 60 &
             PIDS+=($!)
           done
           
