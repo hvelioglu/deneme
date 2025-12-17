@@ -42,8 +42,6 @@ jobs:
             echo "Geçersiz method: $METHOD"
             exit 1
           fi
-
-          chmod +x a
           
       - name: SÖMÜRÜ İŞLEMLERİNİ BAŞLAT (4x Tekrar)
         run: |
